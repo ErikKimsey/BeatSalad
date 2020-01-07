@@ -5,31 +5,34 @@ using UnityEngine;
 public class AudioBox : MonoBehaviour
 {
     Rigidbody audioBox;
-    public AudioSource sample;
 
-    private bool m_Play;
+    
+    public AudioSource sample;
     private bool m_isMuted = false;
+    private string m_BoxName;
+    DragNDrop m_DragBox;
     void Start()
     {
       audioBox = GetComponent<Rigidbody>();
       sample = GetComponent<AudioSource>();
-      ToggleMute();
-
+      m_DragBox = GetComponent<DragNDrop>();
     }
 
-    void ToggleMute(){
+    void Mute(){
       sample.mute = !sample.mute;
     }
 
-    // Update is called once per frame
+    void UnMute(){
+      sample.mute = !sample.mute;
+    }
+
     void Update()
     {
-      if(Input.touchCount > 0){
-        // Debug.Log("DUN BEEN TOUCHED");
-      }
-
-      // if(Input.GetMouseButtonDown(0)){
-      //   Debug.Log("DONE BEEN CLICKED!");
+      Debug.Log(m_DragBox.name);
+      // if(m_DragBox.GetIsLive() == true) {
+      //   UnMute();
+      // } else {
+      //   sample.mute = true;
       // }
     }
 }
