@@ -25,11 +25,11 @@ public class AudioBox : MonoBehaviour
     void Update()
     {
       if(Input.touchCount > 0){
-        Debug.Log("DUN BEEN TOUCHED");
+        // Debug.Log("DUN BEEN TOUCHED");
       }
 
-      if(Input.GetMouseButtonDown(0)){
-        Debug.Log("DONE BEEN CLICKED!");
-      }
+      // if(Input.GetMouseButtonDown(0)){
+      //   Debug.Log("DONE BEEN CLICKED!");
+      // }
     }
 }
