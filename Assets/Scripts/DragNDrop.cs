@@ -9,6 +9,8 @@ public class DragNDrop : MonoBehaviour
     private float zPos;
     Camera mainCamera;
 
+    public bool isTouching;
+
     private bool isDragged = false;
 
     void Start()
@@ -27,7 +29,12 @@ public class DragNDrop : MonoBehaviour
 
 
     private void DraggingObject(){
-
+      Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+      RaycastHit hit;
+      if(Physics.Raycast(ray, out hit) 
+        && hit.collider.gameObject.name == draggedObj.name){
+          transform.position = Input.mousePosition;
+        }
     }
 
     private bool HasInput(){
