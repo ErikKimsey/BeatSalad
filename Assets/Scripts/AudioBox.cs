@@ -29,7 +29,6 @@ public class AudioBox : MonoBehaviour
 
     void Update()
     { 
-      Debug.Log(m_DragBox.GetIsLive());
       if(m_DragBox.GetIsLive() == true) {
         sample.mute = false;
       } else {

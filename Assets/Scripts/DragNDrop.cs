@@ -39,16 +39,18 @@ public class DragNDrop : MonoBehaviour
       m_IsLive = !m_IsLive;
     }
 
-    private void OnTriggerEnter(Collider other) {
-      if(other.name == "BoomBox") SetActive();
+    private void OnCollisionEnter(Collision other) {
+      Debug.Log(other.collider.GetComponent<AudioBox>());
+      if(other.collider.name != "Stage" && m_IsLive == false){
+        SetActive();
+      }
     }
 
-    private void OnTriggerStay(Collider other) {
-      
-    }
-
-    private void OnTriggerExit(Collider other) {
-      SetActive();
+    private void OnCollisionExit(Collision other) {
+      Debug.Log(other.collider.name);
+      if(m_IsLive == true){
+        SetActive();
+      }
     }
 
     public string GetBoxName(){
