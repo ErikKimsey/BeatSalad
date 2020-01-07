@@ -15,7 +15,8 @@ public class AudioBox : MonoBehaviour
     {
       audioBox = GetComponent<Rigidbody>();
       sample = GetComponent<AudioSource>();
-      m_DragBox = GetComponent<DragNDrop>();
+      m_DragBox = gameObject.GetComponent<DragNDrop>();
+      sample.mute = true;
     }
 
     void Mute(){
@@ -27,12 +28,12 @@ public class AudioBox : MonoBehaviour
     }
 
     void Update()
-    {
-      Debug.Log(m_DragBox.name);
-      // if(m_DragBox.GetIsLive() == true) {
-      //   UnMute();
-      // } else {
-      //   sample.mute = true;
-      // }
+    { 
+      Debug.Log(m_DragBox.GetIsLive());
+      if(m_DragBox.GetIsLive() == true) {
+        sample.mute = false;
+      } else {
+        sample.mute = true;
+      }
     }
 }

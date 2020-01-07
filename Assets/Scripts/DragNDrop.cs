@@ -18,7 +18,6 @@ public class DragNDrop : MonoBehaviour
     void Start(){
       box = GetComponent<Rigidbody>();
       m_BoxName = box.name;
-      Debug.Log(m_BoxName);
     }
 
     private void OnMouseDown() {
