@@ -12,7 +12,9 @@ public class DragNDrop : MonoBehaviour
     private bool m_IsLive;
 
     private string m_BoxName;
-
+   public Vector2 startPos;
+    public Vector2 direction;
+    public bool directionChosen;
     private string[] m_BoxesContacted;
 
     void Start(){
@@ -20,9 +22,10 @@ public class DragNDrop : MonoBehaviour
       m_BoxName = box.name;
     }
 
+
     private void OnMouseDown() {
-      m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-      m_Offset = gameObject.transform.position - GetMouseWorldPos();
+      // m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+      // m_Offset = gameObject.transform.position - GetMouseWorldPos();
     }
 
     private Vector3 GetMouseWorldPos(){
@@ -32,7 +35,7 @@ public class DragNDrop : MonoBehaviour
     }
 
     private void OnMouseDrag() {
-      transform.position = GetMouseWorldPos() + m_Offset;
+      // transform.position = GetMouseWorldPos() + m_Offset;
     }
 
     private void SetActive(){
@@ -62,6 +65,31 @@ public class DragNDrop : MonoBehaviour
     }
 
     private void Update() {
-      
+          if (Input.touchCount > 0) {
+            Touch touch = Input.GetTouch(0);
+
+            // Handle finger movements based on touch phase.
+            switch (touch.phase) {
+                // Record initial touch position.
+                case TouchPhase.Began:
+                    startPos = touch.position;
+                    
+                    directionChosen = false;
+                    m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+                    m_Offset = gameObject.transform.position - GetMouseWorldPos();
+                    break;
+
+                // Determine direction by comparing the current touch position with the initial one.
+                case TouchPhase.Moved:
+                    direction = touch.position - startPos;
+                    transform.position = GetMouseWorldPos() + m_Offset;
+                    break;
+
+                // Report that a direction has been chosen when the finger is lifted.
+                case TouchPhase.Ended:
+                    directionChosen = true;
+                    break;
+            }
+        }
     }
 }
