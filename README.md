@@ -6,7 +6,7 @@ Each capsule "contains" an isolated audio loop (e.g., a bass-line or drum loop).
 
 #### by Erik Kimsey [erikkimsey.com](http://erikkimsey.com)
 
-[Imgur](https://i.imgur.com/XwSgOAf.png)
+(https://imgur.com/XwSgOAf)
 
 
 
