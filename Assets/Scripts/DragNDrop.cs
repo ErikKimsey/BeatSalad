@@ -24,8 +24,8 @@ public class DragNDrop : MonoBehaviour
 
 
     private void OnMouseDown() {
-      // m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-      // m_Offset = gameObject.transform.position - GetMouseWorldPos();
+      m_ZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+      m_Offset = gameObject.transform.position - GetMouseWorldPos();
     }
 
     private Vector3 GetMouseWorldPos(){
@@ -35,7 +35,7 @@ public class DragNDrop : MonoBehaviour
     }
 
     private void OnMouseDrag() {
-      // transform.position = GetMouseWorldPos() + m_Offset;
+      transform.position = GetMouseWorldPos() + m_Offset;
     }
 
     private void SetActive(){
